@@ -1,38 +1,177 @@
+:root {
+  --background: #f4f5f9;
+  --yellow: #f4c000;
+  --blue: #00c6f5;
+  --purple: #7132f4;
+  --green: #37d2b9;
+  --red: #ef4e61;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
 .App {
-  text-align: center;
+  font-family: "Work Sans", sans-serif;
+  background-color: var(--background);
+  height: 100vh;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input,
+button {
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* Header style */
+
+header {
+  margin-bottom: 50px;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  border-bottom: 1px solid black;
+}
+
+/* Main */
+
+section {
   display: flex;
   flex-direction: column;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.task {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  height: 50px;
+  box-shadow: var(--shadow);
+  padding: 0 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.finished {
+  text-decoration: line-through;
+  background-color: lightgray;
+}
+
+.task:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+/* Add Task */
+
+.add-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input {
+  border: none;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  height: 50px;
+  box-shadow: var(--shadow);
+  padding: 0 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.add-task div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+
+.select-button:hover {
+  background-color: lightgray;
+}
+
+.add-button {
+  padding: 5px 20px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.add-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.select {
+  margin-right: 10px;
+  background-color: white;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+}
+
+/* Type */
+
+.type {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+
+.work {
+  background-color: var(--blue);
+}
+
+.personnal {
+  background-color: var(--green);
+}
+
+.urgent {
+  background-color: var(--red);
+}
+
+.none {
+  background-color: lightgray;
 }
