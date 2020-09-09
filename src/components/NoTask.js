@@ -4,7 +4,7 @@ import { FaCircle } from "react-icons/fa";
 
 const NoTask = () => {
   return (
-    <div className="task">
+    <div className="task disabled">
       <div className="type none" />
       <FaCircle style={{ color: "white" }} />
     </div>

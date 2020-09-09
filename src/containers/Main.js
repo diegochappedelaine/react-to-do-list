@@ -3,19 +3,26 @@ import Task from "../components/Task";
 import NoTask from "../components/NoTask";
 
 const Main = () => {
-  const [toDo, setToDo] = useState([
-    { task: "Coder une todolist", finished: false, type: "work", id: 1 },
-    { task: "Faire mon cv", finished: true, type: "work", id: 2 },
-    { task: "Remplir linkedin", finished: true, type: "work", id: 3 },
-    { task: "Manger équilibré", finished: false, type: "personnal", id: 4 },
-  ]);
+  const [toDo, setToDo] = useState([]);
   const [input, setInput] = useState("");
   const [type, setType] = useState(null);
+
+  // const testData = [
+  //   { task: "Coder une todolist", finished: true, type: "work", id: 785 },
+  //   { task: "Faire mon cv", finished: true, type: "work", id: 213 },
+  //   { task: "Remplir linkedin", finished: true, type: "work", id: 309 },
+  //   { task: "Manger équilibré", finished: false, type: "personnal", id: 42 },
+  // ];
 
   const addTask = () => {
     if (input !== "") {
       const copy = [...toDo];
-      copy.push({ task: input, finished: false, type, id: toDo.length + 1 });
+      copy.push({
+        task: input,
+        finished: false,
+        type,
+        id: Math.floor(Math.random() * 1001),
+      });
       setType(null);
       setInput("");
       setToDo(copy);
@@ -53,7 +60,6 @@ const Main = () => {
           toDo={toDo}
           setToDo={setToDo}
           index={index}
-          done={true}
           key={index}
         />
       );

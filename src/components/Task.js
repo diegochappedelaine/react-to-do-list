@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FaCheckCircle, FaCircle } from "react-icons/fa";
+import { FaTrash, FaCircle } from "react-icons/fa";
 
 const Task = ({ task, toDo, setToDo, done }) => {
   const handleClick = () => {
@@ -11,16 +11,28 @@ const Task = ({ task, toDo, setToDo, done }) => {
     );
   };
 
-  const taskStyle = done ? "task finished" : "task";
+  const handleDelete = () => {
+    const copy = toDo;
+    const filtered = copy.filter(
+      (element) => element.id.toString() !== task.id.toString()
+    );
+    setToDo(filtered);
+  };
+
+  const taskStyle = task.finished ? "task finished" : "task";
 
   const type = `type ${task.type}`;
 
   return (
-    <div className={taskStyle} onClick={handleClick}>
+    <div className={taskStyle}>
       <div className={type} />
-      <p>{task.task}</p>
+      <button onClick={handleClick}>{task.task}</button>
       {task.finished ? (
-        <FaCheckCircle style={{ color: "green" }} />
+        <FaTrash
+          className="hover"
+          style={{ color: "white" }}
+          onClick={handleDelete}
+        />
       ) : (
         <FaCircle style={{ color: "white" }} />
       )}

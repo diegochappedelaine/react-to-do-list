@@ -11,7 +11,7 @@
 .App {
   font-family: "Work Sans", sans-serif;
   background-color: var(--background);
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -26,7 +26,8 @@ button {
   font-size: 16px;
 }
 
-button:hover {
+button:hover,
+.hover:hover {
   cursor: pointer;
 }
 
@@ -81,9 +82,20 @@ h2 {
   background-color: lightgray;
 }
 
-.task:hover {
+.task button {
+  background-color: transparent;
+  width: 90%;
+  height: 100%;
+  border: none;
   cursor: pointer;
+}
+
+.task:hover {
   transform: scale(1.03);
+}
+
+.disabled:hover {
+  transform: none;
 }
 
 /* Add Task */
@@ -184,6 +196,7 @@ input {
   }
   .select-button {
     margin: 0;
+    margin-bottom: 10px;
   }
   .add-task button {
     width: 45%;
