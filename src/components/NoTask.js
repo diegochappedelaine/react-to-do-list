@@ -6,7 +6,6 @@ const NoTask = () => {
   return (
     <div className="task">
       <div className="type none" />
-      <p></p>
       <FaCircle style={{ color: "white" }} />
     </div>
   );

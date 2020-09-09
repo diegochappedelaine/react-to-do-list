@@ -10,13 +10,13 @@ const Main = () => {
     { task: "Manger équilibré", finished: false, type: "personnal", id: 4 },
   ]);
   const [input, setInput] = useState("");
-  const [type, setType] = useState("work");
+  const [type, setType] = useState(null);
 
   const addTask = () => {
     if (input !== "") {
       const copy = [...toDo];
       copy.push({ task: input, finished: false, type, id: toDo.length + 1 });
-      setType("work");
+      setType(null);
       setInput("");
       setToDo(copy);
     }
