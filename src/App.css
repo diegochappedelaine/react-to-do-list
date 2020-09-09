@@ -111,6 +111,7 @@ input {
 .add-task div {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .select-button {
@@ -133,6 +134,7 @@ input {
   border-radius: 25px;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-left: auto;
   border: none;
   transition: all 0.2s ease-in-out;
@@ -174,4 +176,16 @@ input {
 
 .none {
   background-color: grey;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 80%;
+  }
+  .select-button {
+    margin: 0;
+  }
+  .add-task button {
+    width: 45%;
+  }
 }
