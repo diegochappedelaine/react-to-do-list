@@ -49,12 +49,12 @@ const Main = () => {
     .map((task, index) => {
       return (
         <Task
-          key={index}
           task={task}
           toDo={toDo}
           setToDo={setToDo}
           index={index}
           done={true}
+          key={index}
         />
       );
     });
@@ -94,7 +94,10 @@ const Main = () => {
         </div>
         <h2>To-do</h2>
         {!areEveryTaskFinished ? unFinishedTasks : <NoTask />}
-        {!!finishedTasks.length && [<h2>Done</h2>, finishedTasks]}
+        {!!finishedTasks.length && [
+          <h2 key={Math.floor(Math.random() * 101)}>Done</h2>,
+          finishedTasks,
+        ]}
       </section>
     </main>
   );
