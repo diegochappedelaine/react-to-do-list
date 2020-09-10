@@ -1,8 +1,6 @@
 :root {
   --background: #f4f5f9;
-  --yellow: #f4c000;
   --blue: #00c6f5;
-  --purple: #7132f4;
   --green: #37d2b9;
   --red: #ef4e61;
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -44,11 +42,20 @@ header {
   margin-bottom: 50px;
 }
 
-header div {
+header > div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 80px;
   border-bottom: 1px solid black;
+}
+
+.logo {
+  display: flex;
+}
+
+.logo div {
+  margin-left: 5px;
 }
 
 /* Main */

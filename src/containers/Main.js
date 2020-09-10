@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Task from "../components/Task";
 import NoTask from "../components/NoTask";
+import SetTypeButton from "../components/SetTypeButton";
 
 const Main = () => {
   const [toDo, setToDo] = useState([]);
@@ -14,7 +15,8 @@ const Main = () => {
   //   { task: "Manger équilibré", finished: false, type: "personnal", id: 42 },
   // ];
 
-  const addTask = () => {
+  const addTask = (e) => {
+    e.preventDefault();
     if (input !== "") {
       const copy = [...toDo];
       copy.push({
@@ -68,7 +70,7 @@ const Main = () => {
   return (
     <main className="container">
       <section>
-        <div className="add-task">
+        <form className="add-task" onSubmit={addTask}>
           <input
             type="text"
             value={input}
@@ -76,28 +78,14 @@ const Main = () => {
             placeholder="Add new task"
           />
           <div>
-            <button className="select-button" onClick={() => setType("work")}>
-              <div className={type === "work" ? "select work" : "select"} />
-              <span>Work</span>
-            </button>
-            <button
-              className="select-button"
-              onClick={() => setType("personnal")}
-            >
-              <div
-                className={type === "personnal" ? "select personnal" : "select"}
-              />
-              <span>Personnal</span>
-            </button>
-            <button className="select-button" onClick={() => setType("urgent")}>
-              <div className={type === "urgent" ? "select urgent" : "select"} />
-              <span>Urgent</span>
-            </button>
-            <button className="add-button" onClick={addTask}>
+            <SetTypeButton type={type} setType={setType} value={"work"} />
+            <SetTypeButton type={type} setType={setType} value={"personnal"} />
+            <SetTypeButton type={type} setType={setType} value={"urgent"} />
+            <button className="add-button" type="submit">
               Add
             </button>
           </div>
-        </div>
+        </form>
         <h2>To-do</h2>
         {!areEveryTaskFinished ? unFinishedTasks : <NoTask />}
         {!!finishedTasks.length && [
