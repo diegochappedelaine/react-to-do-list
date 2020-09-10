@@ -10,13 +10,7 @@ const Main = () => {
   const [input, setInput] = useState("");
   const [type, setType] = useState(null);
 
-  // const testData = [
-  //   { task: "Coder une todolist", finished: true, type: "work", id: 785 },
-  //   { task: "Faire mon cv", finished: true, type: "work", id: 213 },
-  //   { task: "Remplir linkedin", finished: true, type: "work", id: 309 },
-  //   { task: "Manger équilibré", finished: false, type: "personnal", id: 42 },
-  // ];
-
+  // Get Tasks from Cookies on loadup
   useEffect(() => {
     const fetchData = async () => {
       const tasksInCookies = await Cookies.get("tasks");
@@ -25,6 +19,7 @@ const Main = () => {
     fetchData();
   }, []);
 
+  // Add New Task
   const addTask = (e) => {
     e.preventDefault();
     if (input !== "") {
@@ -42,6 +37,7 @@ const Main = () => {
     }
   };
 
+  // Handle New Task Name
   const handleInput = (event) => {
     const value = event.target.value;
     setInput(value);
@@ -50,6 +46,7 @@ const Main = () => {
   const areEveryTaskFinished =
     toDo.every((task) => task.finished) || !toDo.length;
 
+  // Display Unfinished Tasks
   const unFinishedTasks = toDo
     .filter((task) => !task.finished)
     .map((task, index) => {
@@ -64,6 +61,7 @@ const Main = () => {
       );
     });
 
+  // Display Finished Tasks
   const finishedTasks = toDo
     .filter((task) => task.finished)
     .map((task, index) => {
