@@ -19,7 +19,13 @@ const Main = () => {
     fetchData();
   }, []);
 
-  // Add New Task
+  // Modify To Do
+  const changeToDo = (newToDo) => {
+    setToDo(newToDo);
+    Cookies.set("tasks", JSON.stringify(newToDo), { expires: 7 });
+  };
+
+  // Handle New Task
   const addTask = (e) => {
     e.preventDefault();
     if (input !== "") {
@@ -32,8 +38,7 @@ const Main = () => {
       });
       setType(null);
       setInput("");
-      setToDo(copy);
-      Cookies.set("tasks", JSON.stringify(copy), { expires: 7 });
+      changeToDo(copy);
     }
   };
 
@@ -55,7 +60,7 @@ const Main = () => {
           key={index}
           task={task}
           toDo={toDo}
-          setToDo={setToDo}
+          changeToDo={changeToDo}
           index={index}
         />
       );
@@ -69,7 +74,7 @@ const Main = () => {
         <Task
           task={task}
           toDo={toDo}
-          setToDo={setToDo}
+          changeToDo={changeToDo}
           index={index}
           key={index}
         />

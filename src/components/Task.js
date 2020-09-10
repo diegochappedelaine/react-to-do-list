@@ -1,10 +1,8 @@
 import React from "react";
 
-import Cookies from "js-cookie";
-
 import { FaTrash, FaCircle } from "react-icons/fa";
 
-const Task = ({ task, toDo, setToDo }) => {
+const Task = ({ task, toDo, changeToDo }) => {
   // Set Task to "finished"
   const handleClick = () => {
     const taskToEdit = toDo.filter((element) => element.id === task.id);
@@ -12,8 +10,7 @@ const Task = ({ task, toDo, setToDo }) => {
     const updated = toDo
       .filter((element) => element.id !== task.id)
       .concat(taskToEdit[0]);
-    setToDo(updated);
-    Cookies.set("tasks", JSON.stringify(updated), { expires: 7 });
+    changeToDo(updated);
   };
 
   // Delete Task
@@ -22,8 +19,7 @@ const Task = ({ task, toDo, setToDo }) => {
     const filtered = copy.filter(
       (element) => element.id.toString() !== task.id.toString()
     );
-    setToDo(filtered);
-    Cookies.set("tasks", JSON.stringify(filtered), { expires: 7 });
+    changeToDo(filtered);
   };
 
   // Handle styling if task is finished or not
