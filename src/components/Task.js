@@ -1,14 +1,18 @@
 import React from "react";
 
+import Cookies from "js-cookie";
+
 import { FaTrash, FaCircle } from "react-icons/fa";
 
 const Task = ({ task, toDo, setToDo, done }) => {
   const handleClick = () => {
     const taskToEdit = toDo.filter((element) => element.id === task.id);
     taskToEdit[0].finished = !taskToEdit[0].finished;
-    setToDo(
-      toDo.filter((element) => element.id !== task.id).concat(taskToEdit[0])
-    );
+    const updated = toDo
+      .filter((element) => element.id !== task.id)
+      .concat(taskToEdit[0]);
+    setToDo(updated);
+    Cookies.set("tasks", JSON.stringify(updated), { expires: 7 });
   };
 
   const handleDelete = () => {
@@ -17,6 +21,7 @@ const Task = ({ task, toDo, setToDo, done }) => {
       (element) => element.id.toString() !== task.id.toString()
     );
     setToDo(filtered);
+    Cookies.set("tasks", JSON.stringify(filtered), { expires: 7 });
   };
 
   const taskStyle = task.finished ? "task finished" : "task";

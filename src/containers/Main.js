@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Task from "../components/Task";
 import NoTask from "../components/NoTask";
 import SetTypeButton from "../components/SetTypeButton";
+
+import Cookies from "js-cookie";
 
 const Main = () => {
   const [toDo, setToDo] = useState([]);
@@ -14,6 +16,14 @@ const Main = () => {
   //   { task: "Remplir linkedin", finished: true, type: "work", id: 309 },
   //   { task: "Manger équilibré", finished: false, type: "personnal", id: 42 },
   // ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const tasksInCookies = await Cookies.get("tasks");
+      tasksInCookies && setToDo(JSON.parse(tasksInCookies));
+    };
+    fetchData();
+  }, []);
 
   const addTask = (e) => {
     e.preventDefault();
@@ -28,6 +38,7 @@ const Main = () => {
       setType(null);
       setInput("");
       setToDo(copy);
+      Cookies.set("tasks", JSON.stringify(copy), { expires: 7 });
     }
   };
 
