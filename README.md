@@ -2,7 +2,7 @@
 
 # React To Do List
 
-To-do list project made with React, you can try [here](https://my-react-counter-v2.netlify.app/)
+To-do list project made with React, you can try [here](https://react-to-do-list-diegochappedelaine.netlify.app/)
 
 - Add tasks to the list
 - Sets task to `done` by clicking on card
